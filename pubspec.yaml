@@ -1,5 +1,5 @@
 name: holo_streams
-description: An app that tracks Hololive streams.
+description: An app built with Flutter that displays current and upcoming Hololive streams.
 
 publish_to: 'none'
 
