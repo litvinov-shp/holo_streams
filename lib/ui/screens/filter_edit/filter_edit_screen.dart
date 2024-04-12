@@ -28,7 +28,7 @@ class FilterEditScreen extends StatefulWidget {
 class _FilterEditScreenState extends State<FilterEditScreen> {
   late final filter = widget.filter.copyWith().obs;
 
-  late final _textController = TextEditingController(text: filter.name);
+  late final _textController = TextEditingController(text: filter.name.trim());
 
   final _scrollController = ScrollController();
 
@@ -39,9 +39,9 @@ class _FilterEditScreenState extends State<FilterEditScreen> {
     if (didPop) {
       return;
     }
-    final shouldDiscard =
-        (setEquals(widget.filter.data, filter.data) && filter.name == _textController.text) ||
-            await const FilterDialog.discard().show(context);
+    final shouldDiscard = (setEquals(widget.filter.data, filter.data) &&
+            _textController.text == filter.name.trim()) ||
+        await const FilterDialog.discard().show(context);
     if (context.mounted && shouldDiscard) {
       context.pop();
     }
@@ -81,7 +81,8 @@ class _FilterEditScreenState extends State<FilterEditScreen> {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: TextButton(
-                    onPressed: () => context.pop(filter.value.copyWith(name: _textController.text)),
+                    onPressed: () =>
+                        context.pop(filter.value.copyWith(name: _textController.text.trim())),
                     child: const Text('Save'),
                   ),
                 ),

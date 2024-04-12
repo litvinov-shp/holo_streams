@@ -33,6 +33,8 @@ class Filter {
 
   final bool isAll;
 
+  String get effectiveName => name.trim().isNotEmpty ? name.trim() : '\u2022'; // bullet
+
   bool operator [](String channelId) => data.contains(channelId);
 
   void operator []=(String channelId, bool contains) {

@@ -68,7 +68,7 @@ class _FilterReorderScreenState extends State<FilterReorderScreen> {
             return ReorderableDragStartListener(
               key: ValueKey(filter),
               index: index,
-              child: ListTile(title: Text('${index + 1}.    ${filter.name}')),
+              child: ListTile(title: Text('${"${index + 1}.".padRight(5)} ${filter.effectiveName}')),
             );
           },
         ),

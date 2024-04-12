@@ -61,7 +61,7 @@ class FilterTabBar extends GetView<FiltersController> implements PreferredSizeWi
               dividerHeight: 0.0,
               tabs: controller.filters.map((filter) {
                 return Tab(
-                  text: filter.name,
+                  text: filter.effectiveName,
                   height: kTextTabBarHeight,
                 );
               }).toList(),
